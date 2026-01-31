@@ -9,7 +9,6 @@ This README describes how to:
 
 ---
 ## Prerequisites
-
 Ensure the following tools are installed:
 
 - Docker
@@ -18,7 +17,6 @@ Ensure the following tools are installed:
 - Helm
 ---
 ## 1. Create a local Kubernetes cluster
-
 ```bash
 kind create cluster --name local-k8s-cluster --config cluster/multi-node-cluster.yaml
 ```
@@ -27,7 +25,6 @@ Verify:
 ```
 kubectl get nodes
 ```
-
 ⸻
 
 2. Create the k6 test script
