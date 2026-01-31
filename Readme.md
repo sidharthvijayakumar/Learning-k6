@@ -26,7 +26,6 @@ Verify:
 kubectl get nodes
 ```
 ⸻
-
 2. Create the k6 test script
 
 Create a file named test-case.js:
