@@ -1,0 +1,12 @@
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: mimir-prometheus
+        type: prometheus
+        access: proxy
+        url: http://mimir-query-frontend.observability.svc.cluster.local:8080/prometheus
+        jsonData:
+          httpHeaderName1: X-Scope-OrgID
+        secureJsonData:
+          httpHeaderValue1: anonymous
