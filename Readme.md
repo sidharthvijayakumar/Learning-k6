@@ -8,7 +8,6 @@ This README describes how to:
 - Visualize metrics in **Grafana**
 
 ---
-
 ## Prerequisites
 
 Ensure the following tools are installed:
@@ -17,9 +16,7 @@ Ensure the following tools are installed:
 - kind
 - kubectl
 - Helm
-
 ---
-
 ## 1. Create a local Kubernetes cluster
 
 ```bash
@@ -132,7 +129,6 @@ rate(k6_http_reqs_total[1m])
 k6_http_req_duration
 ```
 ⸻
-
 Summary
 	•	Local multi-node Kubernetes cluster (kind)
 	•	k6 running as a Kubernetes Job
