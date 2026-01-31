@@ -65,7 +65,6 @@ kubectl get pods -n observability
 ```
 
 ⸻
-
 5. Create Mimir Grafana data source ConfigMap
 ```
 kubectl create configmap mimir-datasource \
@@ -92,7 +91,6 @@ kubectl get pods -n observability
 ```
 
 ⸻
-
 7. Access Grafana
 ```
 kubectl port-forward -n observability svc/grafana 3000:80
@@ -108,7 +106,6 @@ Login:
 You should see the Prometheus (Mimir) data source.
 
 ⸻
-
 8. Run the k6 test
 ```
 kubectl apply -f kube-manifest/job.yaml
