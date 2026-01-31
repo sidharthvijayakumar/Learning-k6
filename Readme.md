@@ -24,11 +24,12 @@ Ensure the following tools are installed:
 
 ```bash
 kind create cluster --name local-k8s-cluster --config cluster/multi-node-cluster.yaml
+```
 
 Verify:
-
+```
 kubectl get nodes
-
+```
 
 ⸻
 
@@ -36,59 +37,46 @@ kubectl get nodes
 
 Create a file named test-case.js:
 
-import http from 'k6/http';
-import { sleep } from 'k6';
-
-export const options = {
-  vus: 5,
-  duration: '30s',
-};
-
-export default function () {
-  http.get('http://nginx-test.default.svc.cluster.local');
-  sleep(1);
-}
-
 
 ⸻
 
 3. Create a ConfigMap for the k6 script
-
+```
 kubectl create configmap k6-script --from-file=test-case.js
-
+```
 Verify:
-
+```
 kubectl get configmap k6-script
-
+```
 
 ⸻
 
 4. Install Grafana Mimir
-
+```
 helm install mimir grafana/mimir-distributed \
   --namespace observability \
   --set minio.enabled=true \
   --set gateway.enabled=true \
   --create-namespace=true
-
+```
 Verify:
-
+```
 kubectl get pods -n observability
-
+```
 
 ⸻
 
 5. Create Mimir Grafana data source ConfigMap
-
+```
 kubectl create configmap mimir-datasource \
   -n observability \
   --from-file=kube-manifest/mimir-datasource.yaml
-
+```
 
 ⸻
 
 6. Install Grafana
-
+```
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 
@@ -97,18 +85,18 @@ helm install grafana grafana/grafana \
   --set adminPassword=admin \
   --set service.type=ClusterIP \
   -f values.yaml
-
+```
 Verify:
-
+```
 kubectl get pods -n observability
-
+```
 
 ⸻
 
 7. Access Grafana
-
+```
 kubectl port-forward -n observability svc/grafana 3000:80
-
+```
 Open in browser:
 
 http://localhost:3000
@@ -122,17 +110,17 @@ You should see the Prometheus (Mimir) data source.
 ⸻
 
 8. Run the k6 test
-
+```
 kubectl apply -f kube-manifest/job.yaml
-
+```
 Check status:
-
+```
 kubectl get jobs
-
+```
 View logs:
-
+```
 kubectl logs job/k6-test
-
+```
 
 ⸻
 
