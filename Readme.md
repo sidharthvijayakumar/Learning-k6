@@ -127,14 +127,13 @@ kubectl logs job/k6-test
 9. Explore k6 metrics in Grafana
 
 In Grafana → Explore → Prometheus, try:
-
+```
 k6_http_reqs_total
 
 rate(k6_http_reqs_total[1m])
 
 k6_http_req_duration
-
-
+```
 ⸻
 
 Summary
