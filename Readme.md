@@ -8,20 +8,15 @@ This README describes how to:
 - Visualize metrics in **Grafana**
 
 ---
-
 ## Prerequisites
-
 Ensure the following tools are installed:
 
 - Docker
 - kind
 - kubectl
 - Helm
-
 ---
-
 ## 1. Create a local Kubernetes cluster
-
 ```bash
 kind create cluster --name local-k8s-cluster --config cluster/multi-node-cluster.yaml
 ```
@@ -30,9 +25,7 @@ Verify:
 ```
 kubectl get nodes
 ```
-
 ⸻
-
 2. Create the k6 test script
 
 Create a file named test-case.js:
@@ -132,7 +125,6 @@ rate(k6_http_reqs_total[1m])
 k6_http_req_duration
 ```
 ⸻
-
 Summary
 	•	Local multi-node Kubernetes cluster (kind)
 	•	k6 running as a Kubernetes Job
